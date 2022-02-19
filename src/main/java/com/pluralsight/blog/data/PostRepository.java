@@ -7,6 +7,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -34,4 +35,8 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     @RestResource(rel="contains-title", path="containsTitle")
     List<Post> findByTitleContaining(String title);
+
+    List<Post> findByTitleNotContaining(String title);
+
+    List<Post> findByAuthor_Lastname(String lastname);
 }
